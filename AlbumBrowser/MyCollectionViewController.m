@@ -10,6 +10,8 @@
 
 #import "MyCollectionViewCell.h"
 
+#import "PhotoPreviewViewController.h"
+
 @interface MyCollectionViewController ()
 
 @end
@@ -63,10 +65,14 @@ static NSString * const reuseIdentifier = @"MyCollectionViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     PHAsset* asset = [self.phAssetsArray objectAtIndex:indexPath.row];
-    if (asset && self.photoSelectDelegate ) {
-        [self.photoSelectDelegate selectedPhtotAsset:asset];
+
+    if (asset) {
+        PhotoPreviewViewController* phVC = [[PhotoPreviewViewController alloc]init];
+        phVC.phAssetsArray = self.phAssetsArray;
+        phVC.photoIndex = indexPath.row;
+        [self.navigationController pushViewController:phVC animated:YES];
     }
-    [self dismissSelf];
+    
 }
 
 

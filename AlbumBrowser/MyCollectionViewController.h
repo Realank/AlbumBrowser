@@ -9,14 +9,9 @@
 #import <UIKit/UIKit.h>
 @class PHAsset;
 
-@protocol PhotoSelectDelegate <NSObject>
-
-- (void)selectedPhtotAsset:(PHAsset*)asset;
-
-@end
 
 @interface MyCollectionViewController : UICollectionViewController
 
 @property (nonatomic, copy) NSArray *phAssetsArray;
-@property (nonatomic, weak) id<PhotoSelectDelegate> photoSelectDelegate;
+
 @end

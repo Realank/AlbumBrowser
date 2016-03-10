@@ -11,7 +11,7 @@
 #import "MyCollectionViewController.h"
 
 
-@interface ViewController () <PhotoSelectDelegate>
+@interface ViewController ()
 
 @end
 
@@ -20,6 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPhotoAsset:) name:@"PhotoSelectedNotification" object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -63,15 +72,18 @@
     
     MyCollectionViewController* myVC = [[MyCollectionViewController alloc]initWithCollectionViewLayout:layout];
     myVC.phAssetsArray = [assetsArr copy];
-    myVC.photoSelectDelegate = self;
     UINavigationController* nav = [[UINavigationController alloc]initWithRootViewController:myVC];
     [self presentViewController:nav animated:YES completion:nil];
     
 }
 
-- (void)selectedPhtotAsset:(PHAsset *)asset {
-    NSLog(@"%@",asset);
+
+- (void)selectedPhotoAsset:(NSNotification *)noti {
+    NSLog(@"%@",noti);
+    NSLog(@"%@",noti.object);
 }
+
+
 
 
 @end
