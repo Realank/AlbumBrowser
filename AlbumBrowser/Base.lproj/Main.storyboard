@@ -16,9 +16,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Ph-WAj">
+                                <rect key="frame" x="150" y="100" width="300" height="400"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8AD-aG-Lso"/>
+                                    <constraint firstAttribute="height" constant="400" id="HW4-4Q-tEJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U93-Ph-WAj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fe8-6Y-RVA"/>
+                            <constraint firstItem="U93-Ph-WAj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grq-DC-HRP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QXO-Aa-cHw"/>
+                    <connections>
+                        <outlet property="photoImageView" destination="U93-Ph-WAj" id="JEI-O1-lT7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

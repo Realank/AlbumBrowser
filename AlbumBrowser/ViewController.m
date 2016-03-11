@@ -12,6 +12,7 @@
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end
 
@@ -20,20 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPhotoAsset:) name:@"PhotoSelectedNotification" object:nil];
+    
+    UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPhoto)];
+    [self.photoImageView addGestureRecognizer:tapGes];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
+- (void)tapPhoto {
     [self loadAssets];
 }
+
 
 - (void)loadAssets {
     
@@ -79,8 +78,17 @@
 
 
 - (void)selectedPhotoAsset:(NSNotification *)noti {
-    NSLog(@"%@",noti);
-    NSLog(@"%@",noti.object);
+    PHAsset* asset = noti.object;
+    
+    if (asset) {
+        __weak __typeof(self) weakSelf = self;
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:self.view.bounds.size contentMode:PHImageContentModeAspectFill options:NULL resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            if (result) {
+                weakSelf.photoImageView.image = result;
+            }
+        }];
+    }
+    
 }
 
 

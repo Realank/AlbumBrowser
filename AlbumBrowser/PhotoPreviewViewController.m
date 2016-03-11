@@ -27,6 +27,9 @@
     [self.photoImageView addGestureRecognizer:swipeGesLeft];
     [self.photoImageView addGestureRecognizer:swipeGesRight];
     
+    UILongPressGestureRecognizer* longPressGes = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressPic)];
+    [self.photoImageView addGestureRecognizer:longPressGes];
+    
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(selectPhoto)]];
 }
 
@@ -42,6 +45,15 @@
             [self displayPhoto];
         }
     }
+}
+
+- (void) longPressPic {
+    
+    NSString* message = [NSString stringWithFormat:@"%.1f x %.1f",self.photoImageView.image.size.width, self.photoImageView.image.size.height];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"图片大小" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)displayPhoto {
