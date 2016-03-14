@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--照片浏览器-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -17,22 +17,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Ph-WAj">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imooc" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Ph-WAj">
                                 <rect key="frame" x="150" y="100" width="300" height="400"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="8AD-aG-Lso"/>
                                     <constraint firstAttribute="height" constant="400" id="HW4-4Q-tEJ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击照片可以换一张" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNK-7c-kSx">
+                                <rect key="frame" x="192" y="119" width="217" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="217" id="EGv-6f-M1D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZNK-7c-kSx" firstAttribute="centerX" secondItem="U93-Ph-WAj" secondAttribute="centerX" id="0JJ-Lj-c63"/>
+                            <constraint firstItem="ZNK-7c-kSx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="55" id="YOf-BR-ZQc"/>
                             <constraint firstItem="U93-Ph-WAj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fe8-6Y-RVA"/>
                             <constraint firstItem="U93-Ph-WAj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grq-DC-HRP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QXO-Aa-cHw"/>
+                    <navigationItem key="navigationItem" title="照片浏览器" id="QXO-Aa-cHw"/>
                     <connections>
                         <outlet property="photoImageView" destination="U93-Ph-WAj" id="JEI-O1-lT7"/>
                     </connections>
@@ -60,4 +71,7 @@
             <point key="canvasLocation" x="565" y="1005"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="imooc" width="3200" height="2000"/>
+    </resources>
 </document>
