@@ -9,7 +9,7 @@
 #import "PhotoPreviewViewController.h"
 #import <Photos/Photos.h>
 
-@interface PhotoPreviewViewController ()
+@interface PhotoPreviewViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 @end
@@ -21,18 +21,31 @@
     // Do any additional setup after loading the view from its nib.
     [self displayPhoto];
     UISwipeGestureRecognizer* swipeGesLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToChangePhotos:)];
+    swipeGesLeft.numberOfTouchesRequired = 1;
     swipeGesLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    
     UISwipeGestureRecognizer* swipeGesRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToChangePhotos:)];
+    swipeGesRight.numberOfTouchesRequired = 1;
     swipeGesRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.photoImageView addGestureRecognizer:swipeGesLeft];
     [self.photoImageView addGestureRecognizer:swipeGesRight];
     
     UILongPressGestureRecognizer* longPressGes = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressPic)];
     [self.photoImageView addGestureRecognizer:longPressGes];
+
+    
+    UIPanGestureRecognizer* panGes = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGes)];
+    panGes.minimumNumberOfTouches = 2;
+    [self.photoImageView addGestureRecognizer:panGes];
+    
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(selectPhoto)]];
 }
 
+- (void)panGes {
+    NSLog(@"pan");
+}
 - (void)swipeToChangePhotos:(UISwipeGestureRecognizer*)sender {
     if (sender.direction & UISwipeGestureRecognizerDirectionRight) {
         if (self.photoIndex > 0) {

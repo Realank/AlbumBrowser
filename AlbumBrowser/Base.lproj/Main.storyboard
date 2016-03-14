@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击照片可以换一张" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNK-7c-kSx">
-                                <rect key="frame" x="192" y="119" width="217" height="21"/>
+                                <rect key="frame" x="192" y="72" width="217" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="217" id="EGv-6f-M1D"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZNK-7c-kSx" firstAttribute="centerX" secondItem="U93-Ph-WAj" secondAttribute="centerX" id="0JJ-Lj-c63"/>
-                            <constraint firstItem="ZNK-7c-kSx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="55" id="YOf-BR-ZQc"/>
+                            <constraint firstItem="ZNK-7c-kSx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="YOf-BR-ZQc"/>
                             <constraint firstItem="U93-Ph-WAj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fe8-6Y-RVA"/>
                             <constraint firstItem="U93-Ph-WAj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grq-DC-HRP"/>
                         </constraints>
